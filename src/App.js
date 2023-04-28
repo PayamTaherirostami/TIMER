@@ -4,12 +4,14 @@ import { CSVLink } from "react-csv";
 
 
 const csvData = [
-  ["firstname", "Po#", "time"],
+  ["Name", "Po#", "Time","Colors","Total","Rotation"],
 ];
 
 const App = () => {
   const [time, setTime] = React.useState(0);
   const [timerOn, setTimerOn] = React.useState(false);
+  const [value1, setValue1] = React.useState("")
+  const [value2, setValue2] = React.useState("")
 
   React.useEffect(() => {
     let interval = null;
@@ -34,15 +36,34 @@ const myTime =(new Date(time).toISOString().slice(11, 19))
 function reset () {
  
   alert(`your time is: ${myTime}`)
-  const display= document.querySelector("#In3")
-  display.setAttribute('src',myTime)
+
   // inja bayad az form etelaat ro begire
-  myArr.push('payam','99',myTime.toString())
+  myArr.push(value1,value2,myTime.toString())
   csvData.push(myArr)
+
   console.log(csvData)
   setTime(0)
+  // setValue1("")
+  setValue2("")
 }
+
   return (
+    <>
+    <div>
+    <form>
+      <p>your name</p>
+      
+      <input type="text" value={value1}  onChange={e => setValue1(e.target.value)}/>
+      <p>PO#</p>
+      <input type="text" value={value2}  onChange={e => setValue2(e.target.value)}/>
+      <p>
+        Your total time:
+      </p>
+      <input type="text" value={myTime}/>
+
+    </form>
+
+  </div>
     <div className="Timers">
       <h2>Start timing your tasks</h2>
       <div id="display">
@@ -66,13 +87,14 @@ function reset () {
         )}
       </div>
       <div>
-      <span>{myTime}</span>
+      {/* <span>{myTime}</span> */}
       <p></p>
-      <CSVLink data={csvData}>Download results</CSVLink>
+      <CSVLink data={csvData}><button id = "finish" onClick={e => setValue1("")}>My shift is finished</button></CSVLink>
 
       {/* <CSVDownload data={csvData} target="_blank" /> */}
       </div>
     </div>
+    </>
   );
 };
 

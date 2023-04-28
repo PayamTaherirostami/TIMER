@@ -32,3 +32,17 @@ button:active {
 button:focus {
   outline: 0;
 }
+p{
+  color: blue;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+input{
+  margin-left: 20px;
+  border-radius: 5px;
+
+}
+#finish{
+  background-color:blueviolet
+}
