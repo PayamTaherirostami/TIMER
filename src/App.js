@@ -35,7 +35,7 @@ const myArr= []
 const myTime =(new Date(time).toISOString().slice(11, 19))
 function reset () {
  
-  alert(`your time is: ${myTime}`)
+  // alert(`your time is: ${myTime}`)
 
   // inja bayad az form etelaat ro begire
   myArr.push(value1,value2,myTime.toString())
